@@ -1,35 +1,54 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import ThemeContext, { Themes } from "./Components/Theme";
+import logo from "../src/assets/Movie_radar_logo.png";
+import { useState } from "react";
+import moonImage from "../src/assets/moon.png";
+import sunImage from "../src/assets/sun.png";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const isDarkMode = window.matchMedia("(prefers-color-scheme: dark)").matches;
+  let defaultTheme = "";
+  if (isDarkMode) {
+    defaultTheme = Themes.dark;
+  } else {
+    defaultTheme = Themes.light;
+  }
+  const [currentTheme, setCurrentTheme] = useState(defaultTheme);
+  let themeImgURL = "";
+  if (currentTheme === Themes.light) {
+    themeImgURL = moonImage;
+  } else {
+    themeImgURL = sunImage;
+  }
 
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <ThemeContext.Provider value={currentTheme}>
+        <div
+          style={{ height: "100vh", backgroundColor: currentTheme.background }}
+        >
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "space-between",
+              padding: "15px",
+            }}
+          >
+            <img src={logo} width={"20%"}></img>
+            <img
+              src={themeImgURL}
+              width={"40px"}
+              height={"40px"}
+              onClick={() => {
+                setCurrentTheme(
+                  currentTheme === Themes.light ? Themes.dark : Themes.light
+                );
+              }}
+            />
+          </div>
+        </div>
+      </ThemeContext.Provider>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
