@@ -1,0 +1,18 @@
+@font-face {
+  font-family: "Poppins-thin";
+  src: url("../assets/Fonts/Poppins-Thin.ttf") format("truetype");
+}
+@font-face {
+    font-family: "Poppins-semi-bold";
+    src: url("../assets/Fonts/Poppins-SemiBold.ttf") format("truetype");
+  }
+h2,
+h3,
+h4,
+h5 {
+  font-family: "Poppins-thin";
+}
+
+h1 {
+  font-family: "Poppins-semi-bold";
+}
