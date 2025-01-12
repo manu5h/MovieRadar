@@ -3,16 +3,28 @@
   src: url("../assets/Fonts/Poppins-Thin.ttf") format("truetype");
 }
 @font-face {
-    font-family: "Poppins-semi-bold";
-    src: url("../assets/Fonts/Poppins-SemiBold.ttf") format("truetype");
-  }
-h2,
-h3,
-h4,
-h5 {
-  font-family: "Poppins-thin";
+  font-family: "Poppins-semi-bold";
+  src: url("../assets/Fonts/Poppins-SemiBold.ttf") format("truetype");
 }
 
-h1 {
+@font-face {
+  font-family: "Poppins-black";
+  src: url("../assets/Fonts/Poppins-Light.ttf") format("truetype");
+}
+h2,
+h4,
+h6 {
+  font-family: "Poppins-thin";
+  margin: 0;
+}
+
+h1,
+h3 {
   font-family: "Poppins-semi-bold";
+  margin: 0;
+}
+
+h5 {
+  font-family: "Poppins-black";
+  margin: 0;
 }
