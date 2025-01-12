@@ -4,6 +4,7 @@ import API_ENDPOINT from "../../Config";
 import leftScroll from "../assets/left_Scroll.png";
 import rightScroll from "../assets/right_Scroll.png";
 import notAvailableImg from "../assets/notAvailable.jpg";
+import SuggetionTilsHover from "./SuggetionTilsHover";
 
 const SuggestionTils = (props) => {
   const Theme = useContext(ThemeContext);
@@ -11,6 +12,7 @@ const SuggestionTils = (props) => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [opacity, setOpacity] = useState(0.5);
+  const [hoverTileID, setHoverTileID] = useState(null);
 
   // Reference for the scrollable container
   const scrollContainerRef = useRef();
@@ -122,40 +124,86 @@ const SuggestionTils = (props) => {
         }}
         ref={scrollContainerRef}
       >
-        {data?.results?.map((movie) => (
-          <div
-            key={movie.id}
-            style={{
-              margin: "50px 10px 10px 10px",
-            }}
-          >
-            <img
-              src={
-                movie.poster_path
-                  ? `${API_ENDPOINT.IMG_URL}${movie.poster_path}`
-                  : notAvailableImg
-              }
-              alt={movie.title}
+        {data?.results?.map((movie) =>
+          movie.poster_path ? (
+            <div
+              key={movie.id}
               style={{
-                marginTop: "10px",
-                width: "150px",
-                height: "225px",
-                borderRadius: "10px",
-                border: `2px solid ${Theme.foreground}`,
-              }}
-            />
-            <h4
-              style={{
-                paddingLeft: "10px",
-                color: Theme.foreground,
-                margin: "0",
-                height: "95px",
+                margin: "50px 10px 10px 10px",
+                transition: "transform 0.6s ease, opacity 0.6s ease",
+                transform:
+                  hoverTileID === movie.id ? "scale(1.05)" : "scale(1)",
+                opacity:
+                  hoverTileID === null || hoverTileID === movie.id ? 1 : 0.3,
               }}
             >
-              {movie.title}
-            </h4>
-          </div>
-        ))}
+              {hoverTileID != movie.id ? (
+                <div>
+                  <img
+                    onMouseEnter={() => setHoverTileID(movie.id)}
+                    src={
+                      movie.poster_path
+                        ? `${API_ENDPOINT.IMG_URL}${movie.poster_path}`
+                        : notAvailableImg
+                    }
+                    alt={movie.title}
+                    style={{
+                      marginTop: "10px",
+                      width: "150px",
+                      height: "225px",
+                      borderRadius: "10px",
+                      border: `2px solid ${Theme.foreground}`,
+                    }}
+                  />
+                  <h4
+                    style={{
+                      paddingLeft: "10px",
+                      color: Theme.foreground,
+                      margin: "0",
+                      height: "95px",
+                    }}
+                  >
+                    {movie.title}
+                  </h4>
+                </div>
+              ) : (
+                <div
+                  style={{
+                    transition: "transform 0.6s ease, opacity 0.6s ease",
+                    height: "250px",
+                    width: "400px",
+                    borderRadius: "10px",
+                    boxShadow: "6px 6px 8px rgba(0, 0, 0, 0.3)",
+                  }}
+                  onMouseLeave={() => setHoverTileID(null)}
+                >
+                  <div style={{ display: "flex", flexDirection: "row" }}>
+                    <img
+                      src={
+                        movie.backdrop_path
+                          ? `${API_ENDPOINT.IMG_URL_Full_Res}${movie.backdrop_path}`
+                          : `${API_ENDPOINT.IMG_URL_Full_Res}${movie.poster_path}`
+                      }
+                      alt={movie.title}
+                      style={{
+                        width: "400px",
+                        height: "250px",
+                        borderRadius: "10px",
+                        opacity: "0.5",
+                      }}
+                    />
+                    <SuggetionTilsHover
+                      title={movie.title}
+                      year={movie.release_date.slice(0, 4)}
+                      lan={movie.original_language}
+                      id={movie.id}
+                    />
+                  </div>
+                </div>
+              )}
+            </div>
+          ) : null
+        )}
       </div>
     </div>
   );
