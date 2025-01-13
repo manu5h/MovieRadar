@@ -4,18 +4,18 @@
   "version": "0.0.0",
   "type": "module",
   "homepage": "https://manu5h.github.io/MovieRadar",
-
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist"  
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "react-dom": "^18.3.1",
+    "react-outside-click-handler": "^1.3.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.17.0",

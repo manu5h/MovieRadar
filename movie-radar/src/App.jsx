@@ -26,9 +26,7 @@ function App() {
   return (
     <>
       <ThemeContext.Provider value={currentTheme}>
-        <div
-          style={{backgroundColor: currentTheme.background }}
-        >
+        <div style={{ backgroundColor: currentTheme.background }}>
           <div
             style={{
               display: "flex",
@@ -36,7 +34,7 @@ function App() {
               padding: "15px",
             }}
           >
-            <img src={logo} width={"20%"}></img>
+            <img src={logo} width={"200px"}></img>
             <img
               src={themeImgURL}
               width={"40px"}
@@ -105,9 +103,6 @@ function App() {
               API={API_ENDPOINT.Comming_soon}
             />
           </div>
-          <h1>dsscdwscsdcdscs</h1>
-          
-          
         </div>
       </ThemeContext.Provider>
     </>
