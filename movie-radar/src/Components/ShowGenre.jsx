@@ -61,6 +61,7 @@ function ShowGenre(props) {
           return (
             <div
               key={matchedGenre.id}
+              
               style={{
                 backgroundColor: matchedGenre.color,
                 width: `${10* matchedGenre.name.length}px`,
@@ -82,7 +83,7 @@ function ShowGenre(props) {
   }
 
   return (
-    <div style={{ flexWrap: "wrap", display: "flex", width: "180px", margin: "2px 0 0 10px"}}>
+    <div className="genres-div" >
       <GenreDiv />
     </div>
   );

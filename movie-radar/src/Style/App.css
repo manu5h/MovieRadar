@@ -2,6 +2,7 @@
   font-family: "Poppins-thin";
   src: url("../assets/Fonts/Poppins-Thin.ttf") format("truetype");
 }
+
 @font-face {
   font-family: "Poppins-semi-bold";
   src: url("../assets/Fonts/Poppins-SemiBold.ttf") format("truetype");
@@ -11,6 +12,7 @@
   font-family: "Poppins-black";
   src: url("../assets/Fonts/Poppins-Light.ttf") format("truetype");
 }
+
 h2,
 h4,
 h6 {
@@ -27,4 +29,171 @@ h3 {
 h5 {
   font-family: "Poppins-black";
   margin: 0;
+}
+
+.Tills_main_div {
+  height: 400px;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  margin: 10px 0 30px 0;
+}
+
+.h1Style {
+  padding-left: 15px;
+  margin: 5px;
+  position: absolute;
+  top: 10px;
+}
+
+.scroll-btn-left-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  background-color: transparent;
+  border: none;
+}
+
+.scroll-btn-right-btn {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  background-color: transparent;
+  border: none;
+}
+
+.scroll-container {
+  display: flex;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 10px;
+  scroll-behavior: smooth;
+}
+
+.movie-poster img {
+  margin-top: 10px;
+  width: 150px;
+  height: 225px;
+  border-radius: 10px;
+}
+
+.movie-poster h4 {
+  padding-left: 10px;
+  margin: 0;
+  height: 95px;
+}
+
+.hover-tile {
+  transition: transform 0.6s ease, opacity 0.6s ease;
+  height: 250px;
+  width: 400px;
+  border-radius: 10px;
+  box-shadow: 6px 6px 8px rgba(0, 0, 0, 0.3);
+}
+
+.hover-backdrop-img {
+  width: 400px;
+  height: 250px;
+  border-radius: 10px;
+  opacity: 0.5;
+}
+
+.hoverDivStyle {
+  margin: 5px 5px 5px -200px;
+  z-index: 1000;
+  width: 200px;
+  height: 241px;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.7);
+  overflow: hidden;
+  overflow-y: auto;
+  scroll-behavior: smooth;
+  scrollbar-width: none; /* For Firefox */
+  -ms-overflow-style: none; /* For Internet Explorer and Edge */
+}
+
+/* Hide scrollbar for webkit browsers (Chrome, Safari, etc.) */
+.hoverDivStyle::-webkit-scrollbar {
+  display: none;
+}
+
+.tile-full-div {
+  margin: 50px 10px 10px 10px;
+}
+
+.hoverDivStyle-second {
+  padding: 10px;
+}
+
+.genres-div {
+  flex-wrap: wrap;
+  display: flex;
+  width: 180px;
+  margin: 2px 0 0 10px;
+}
+
+@media (max-width: 768px) {
+  .movie-poster img {
+    margin-top: 10px;
+    width: 100px;
+    height: 165px;
+    border-radius: 10px;
+  }
+
+  .Tills_main_div {
+    height: 300px;
+  }
+
+  .h1Style {
+    font-size: 18px;
+  }
+
+  .tile-full-div {
+    margin: 30px 10px 10px 10px;
+  }
+
+  .default-tile-h4 {
+    font-size: 12px;
+  }
+
+  .scroll-btn-left-btn {
+    display: none;
+  }
+
+  .scroll-btn-right-btn {
+    display: none;
+  }
+  .hover-tile {
+    height: 200px;
+    width: 300px;
+  }
+  .hover-backdrop-img {
+    height: 200px;
+    width: 300px;
+  }
+
+  .hoverDivStyle {
+    margin: 5px 5px 5px -155px;
+    width: 150px;
+    height: 190px;
+  }
+
+  .hoverDivStyle h3 {
+    font-size: 14px;
+  }
+
+  .hoverDivStyle h5 {
+    font-size: 11px;
+  }
+
+  .hoverDivStyle-second {
+    padding: 5px;
+  }
+
+  .genres-div {
+    width: 145px;
+  }
 }
