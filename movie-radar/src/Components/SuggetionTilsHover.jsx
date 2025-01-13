@@ -4,7 +4,6 @@ import IMDB_img from "../assets/IMDB_Logo.png";
 import Tomato_img from "../assets/Rotten_Tomatoes.svg.png";
 import ShowGenre from "./ShowGenre";
 
-
 function SuggetionTilsHover(props) {
   const [data, setData] = useState(null);
   const [IMDB, setIMDB] = useState(null);
@@ -133,8 +132,8 @@ function SuggetionTilsHover(props) {
   }, [props.id]);
 
   return (
-    <div style={hoverDivStyle}>
-      <div style={{ padding: "10px" }}>
+    <div className="hoverDivStyle">
+      <div className="hoverDivStyle-second">
         <h3>{props.title}</h3>
         <h5>Year: {props.year}</h5>
         <h5>Language: {lan}</h5>
@@ -189,23 +188,10 @@ function SuggetionTilsHover(props) {
           </>
         )}
       </div>
-      <ShowGenre id={props.id}/>
+      <ShowGenre id={props.id} />
     </div>
   );
 }
-const hoverDivStyle = {
-    margin: "5px 5px 5px -200px",
-    zIndex: 1000,
-    width: "200px",
-    height: "241px",
-    borderRadius: "10px",
-    backgroundColor: "rgba(255, 255, 255, 0.7)",
-    overflow: "hidden",
-    overflowY: "auto",
-    scrollBehavior: "smooth",
-    scrollbarWidth: "none",
-    msOverflowStyle: "none",
-  };
-  
-  
+
+
 export default SuggetionTilsHover;
