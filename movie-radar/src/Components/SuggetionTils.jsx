@@ -5,6 +5,7 @@ import leftScroll from "../assets/left_Scroll.png";
 import rightScroll from "../assets/right_Scroll.png";
 import notAvailableImg from "../assets/notAvailable.jpg";
 import SuggetionTilsHover from "./SuggetionTilsHover";
+import OutsideClickHandler from "react-outside-click-handler";
 
 const SuggestionTils = (props) => {
   const Theme = useContext(ThemeContext);
@@ -141,6 +142,7 @@ const SuggestionTils = (props) => {
                 <div>
                   <img
                     onMouseEnter={() => setHoverTileID(movie.id)}
+                    onClick={() => setHoverTileID(movie.id)}
                     src={
                       movie.poster_path
                         ? `${API_ENDPOINT.IMG_URL}${movie.poster_path}`
@@ -177,28 +179,32 @@ const SuggestionTils = (props) => {
                   }}
                   onMouseLeave={() => setHoverTileID(null)}
                 >
-                  <div style={{ display: "flex", flexDirection: "row" }}>
-                    <img
-                      src={
-                        movie.backdrop_path
-                          ? `${API_ENDPOINT.IMG_URL_Full_Res}${movie.backdrop_path}`
-                          : `${API_ENDPOINT.IMG_URL_Full_Res}${movie.poster_path}`
-                      }
-                      alt={movie.title}
-                      style={{
-                        width: "400px",
-                        height: "250px",
-                        borderRadius: "10px",
-                        opacity: "0.5",
-                      }}
-                    />
-                    <SuggetionTilsHover
-                      title={movie.title}
-                      year={movie.release_date.slice(0, 4)}
-                      lan={movie.original_language}
-                      id={movie.id}
-                    />
-                  </div>
+                  <OutsideClickHandler
+                    onOutsideClick={() => setHoverTileID(null)}
+                  >
+                    <div style={{ display: "flex", flexDirection: "row" }}>
+                      <img
+                        src={
+                          movie.backdrop_path
+                            ? `${API_ENDPOINT.IMG_URL_Full_Res}${movie.backdrop_path}`
+                            : `${API_ENDPOINT.IMG_URL_Full_Res}${movie.poster_path}`
+                        }
+                        alt={movie.title}
+                        style={{
+                          width: "400px",
+                          height: "250px",
+                          borderRadius: "10px",
+                          opacity: "0.5",
+                        }}
+                      />
+                      <SuggetionTilsHover
+                        title={movie.title}
+                        year={movie.release_date.slice(0, 4)}
+                        lan={movie.original_language}
+                        id={movie.id}
+                      />
+                    </div>
+                  </OutsideClickHandler>
                 </div>
               )}
             </div>
