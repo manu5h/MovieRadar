@@ -1,0 +1,152 @@
+.view-more-main-div {
+  width: 80%;
+  border-radius: 20px;
+  box-shadow: 0 0 15px 10px rgba(0, 0, 0, 0.4);
+  padding: 20px 20px 0 20px;
+  margin-bottom: 50px;
+  overflow: hidden;
+}
+
+.view-more-poster-img {
+  width: 215px;
+  border-radius: 5px;
+  height: 315px;
+}
+
+.view-more-poster-and-details {
+  padding: 20px;
+  max-width: 550px;
+  align-items: center;
+}
+
+.production-company-img {
+  padding: 10px;
+  background-color: #cecece;
+  width: 250px;
+  margin: 10px 0 0 0;
+  border-radius: 10px;
+  max-height: 230px;
+}
+
+.view-more-details-main-div {
+  display: flex;
+}
+
+.view-more-details-right-side {
+  flex-wrap: wrap;
+  display: flex;
+  overflow-y: scroll;
+  max-height: 330px;
+  width: 730px;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.view-more-details-left-side {
+  width: 380px;
+}
+
+.cast-images {
+  flex-direction: column;
+  display: flex;
+  flex-wrap: wrap;
+  width: 100px;
+  text-align: center;
+  margin: 10px;
+}
+
+.cast-images img {
+  width: 100px;
+  height: 150px;
+  border-radius: 5px;
+  box-shadow: 0 0 3px 1px rgba(0, 0, 0, 0.3);
+}
+
+.yt-frame {
+  width: 560px;
+  height: 315px;
+}
+
+.view-more-full-main-details h1 {
+  margin-left: 10px;
+  line-height: 40px;
+  margin-bottom: 10px;
+}
+
+.view-more-full-main-details h2 {
+  font-size: 18px;
+  margin-left: 10px;
+  margin-top: -5px;
+}
+
+@media (max-width: 768px) {
+  .view-more-main-div {
+    width: 95%;
+    padding: 15px;
+    margin: 5px;
+  }
+
+  .view-more-main-div h4 {
+    font-size: 12px;
+  }
+
+  .view-more-poster-img {
+    width: 140px; /* Scale down poster size */
+    height: 210px;
+  }
+
+  .view-more-poster-and-details {
+    padding: 10px; /* Reduce padding */
+    max-width: 100%; /* Use full width */
+  }
+
+  .view-more-poster-and-details h1 {
+    font-size: 20px;
+    line-height: 25px;
+  }
+
+  .view-more-details-main-div {
+    flex-direction: column; /* Stack content vertically */
+    align-items: center;
+  }
+
+  .view-more-details-right-side {
+    margin: 15px 0 0 0;
+    max-height: 250px;
+    width: 400px;
+  }
+
+  .production-company-img {
+    width: 40%; /* Make the company images fit the container */
+    max-height: 150px; /* Scale down height */
+  }
+
+  .cast-images {
+    width: 70px; /* Scale down cast images */
+    margin: 5px; /* Reduce margin for tighter spacing */
+  }
+
+  .cast-images img {
+    width: 70px;
+    height: 100px; /* Adjust height proportionally */
+  }
+
+  .yt-frame {
+    width: 100%;
+    height: calc(100vw * 9 / 16);
+  }
+
+  .view-more-full-main-details h1 {
+    font-size: 20px;
+  }
+
+  .view-more-full-main-details h2 {
+    font-size: 18px;
+    margin-top: 0;
+  }
+
+  .view-more-full-main-details h1 {
+    margin-bottom: 10px;
+  }
+}
