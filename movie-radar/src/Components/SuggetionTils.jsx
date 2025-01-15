@@ -1,5 +1,6 @@
 import { useContext, useEffect, useState, useRef } from "react";
 import ThemeContext, { Themes } from "./Theme";
+import { useNavigate } from "react-router-dom";
 import API_ENDPOINT from "../../Config";
 import leftScroll from "../assets/left_Scroll.png";
 import rightScroll from "../assets/right_Scroll.png";
@@ -14,6 +15,7 @@ const SuggestionTils = (props) => {
   const [error, setError] = useState(null);
   const [opacity, setOpacity] = useState(0.5);
   const [hoverTileID, setHoverTileID] = useState(null);
+  const navigate = useNavigate();
 
   // Reference for the scrollable container
   const scrollContainerRef = useRef();
@@ -54,6 +56,7 @@ const SuggestionTils = (props) => {
   const handleMouseEnter = () => setOpacity(1);
   const handleMouseLeave = () => setOpacity(0.5);
 
+
   return (
     <div
       className="Tills_main_div"
@@ -87,7 +90,7 @@ const SuggestionTils = (props) => {
         {data?.results?.map((movie) =>
           movie.poster_path ? (
             <div
-            className="tile-full-div"
+              className="tile-full-div"
               key={movie.id}
               style={{
                 transition: "transform 0.6s ease, opacity 0.6s ease",
@@ -112,7 +115,8 @@ const SuggestionTils = (props) => {
                       border: `2px solid ${Theme.foreground}`,
                     }}
                   />
-                  <h4 className="default-tile-h4"
+                  <h4
+                    className="default-tile-h4"
                     style={{
                       color: Theme.foreground,
                     }}
@@ -130,12 +134,10 @@ const SuggestionTils = (props) => {
                   >
                     <div style={{ display: "flex", flexDirection: "row" }}>
                       <button
-                        style={{
-                          top: "220px",
-                          position: "absolute",
-                          zIndex: "100",
-                          left: "100px",
-                        }}
+                        className="view-more-button"
+                        onClick={() =>
+                          navigate("/view-more", { state: { id: movie.id } })
+                        }
                       >
                         View More...
                       </button>

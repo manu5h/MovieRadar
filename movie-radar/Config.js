@@ -23,9 +23,11 @@ const API_ENDPOINT = {
     Best_sinhala: `https://api.themoviedb.org/3/discover/movie?api_key=${TMDB_APIKey}&with_original_language=si`,
     highest_Revenue: `https://api.themoviedb.org/3/discover/movie?api_key=${TMDB_APIKey}&sort_by=revenue.desc&vote_count.gte=500`,
     IMG_URL: `https://image.tmdb.org/t/p/w500`,
+    IMG_URL_Small: `https://image.tmdb.org/t/p/w200`,
     IMG_URL_Full_Res: `https://image.tmdb.org/t/p/original`,
     Additional_first_page: `https://api.themoviedb.org/3/movie/:id?api_key=${TMDB_APIKey}`,
-    IMDB_rating: `https://www.omdbapi.com/?i=:IMDB_Id&apikey=${OMDB_APIKey}`
+    IMDB_rating: `https://www.omdbapi.com/?i=:IMDB_Id&apikey=${OMDB_APIKey}`,
+    Cast_URL: `https://api.themoviedb.org/3/movie/:id/credits?api_key=${TMDB_APIKey}`
   };
 
 export default API_ENDPOINT;
