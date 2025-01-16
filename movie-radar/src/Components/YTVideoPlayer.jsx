@@ -24,9 +24,7 @@ const YouTubeVideo = ({ movieId }) => {
           setVideoId(trailer.key); // YouTube video key
           setError(null);
         } else {
-          setError(
-            ":( No official trailer available for this movie (according to TMDB)."
-          );
+          null
         }
       } catch (error) {
         console.error("TMDB API error:", error);
@@ -41,14 +39,13 @@ const YouTubeVideo = ({ movieId }) => {
 
   return (
     <div style={{ textAlign: "center", margin: "20px" }}>
-      {error && <p style={{ color: "red" }}>{error}</p>}
       {videoId ? (
         <iframe
           className="yt-frame"
           src={`https://www.youtube.com/embed/${videoId}`}
           title="YouTube video player"
           frameBorder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowFullScreen
         ></iframe>
       ) : (

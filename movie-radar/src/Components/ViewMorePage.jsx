@@ -17,7 +17,6 @@ function ViewMorePage() {
   const [data1, setData1] = useState(null);
   const [data2, setData2] = useState(null);
   const [data3, setData3] = useState(null);
-  const [loading, setLoading] = useState(true);
   const theme = useContext(ThemeContext);
   let full_title = "";
   let bg_img_url = "";
@@ -42,7 +41,6 @@ function ViewMorePage() {
           throw new Error("Failed to fetch additional first page data");
         const data1 = await response1.json();
         setData1(data1);
-        setLoading(false);
 
         // Fetch IMDB rating
         const response2 = await fetch(
@@ -65,11 +63,10 @@ function ViewMorePage() {
     fetchData();
   }, [id]);
 
-  return loading ? (
-    <h1>Loading !!!</h1>
-  ) : (
+  return (
     <>
       <div
+        className="view-more-background"
         style={{
           backgroundImage: bg_img_url ? `url(${bg_img_url})` : "none",
           backgroundSize: "cover",
@@ -123,7 +120,6 @@ function ViewMorePage() {
                     <h2
                       style={{
                         color: theme.foreground,
-                        
                       }}
                     >
                       {data1.release_date.slice(0, 4)}
@@ -268,41 +264,45 @@ function ViewMorePage() {
                   ) : null}
                 </div>
 
-                <div>
-                  <h4 style={{ textAlign: "center", color: theme.foreground }}>
-                    Cast
-                  </h4>
-                  <div className="view-more-details-right-side">
-                    {data3 &&
-                      data3.cast.map((cast) => (
-                        <div className="cast-images">
-                          <img
-                            src={
-                              cast.profile_path
-                                ? `${API_ENDPOINT.IMG_URL_Small}${cast.profile_path}`
-                                : notAvailableImg
-                            }
-                          />
-                          <h3
-                            style={{
-                              color: theme.foreground,
-                              fontSize: "12px",
-                            }}
-                          >
-                            {cast.name}
-                          </h3>
-                          <h4
-                            style={{
-                              color: theme.foreground,
-                              fontSize: "12px",
-                            }}
-                          >
-                            ({cast.character})
-                          </h4>
-                        </div>
-                      ))}
+                {data3 && data3.cast.length > 0 ? (
+                  <div>
+                    <h4
+                      style={{ textAlign: "center", color: theme.foreground }}
+                    >
+                      Cast
+                    </h4>
+                    <div className="view-more-details-right-side">
+                      {data3 &&
+                        data3.cast.map((cast) => (
+                          <div className="cast-images">
+                            <img
+                              src={
+                                cast.profile_path
+                                  ? `${API_ENDPOINT.IMG_URL_Small}${cast.profile_path}`
+                                  : notAvailableImg
+                              }
+                            />
+                            <h3
+                              style={{
+                                color: theme.foreground,
+                                fontSize: "12px",
+                              }}
+                            >
+                              {cast.name}
+                            </h3>
+                            <h4
+                              style={{
+                                color: theme.foreground,
+                                fontSize: "12px",
+                              }}
+                            >
+                              ({cast.character})
+                            </h4>
+                          </div>
+                        ))}
+                    </div>
                   </div>
-                </div>
+                ) : null}
               </div>
             </div>
           </div>

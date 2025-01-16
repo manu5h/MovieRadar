@@ -4,58 +4,96 @@ import { useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import moonImage from "../src/assets/moon.png";
 import sunImage from "../src/assets/sun.png";
+import bg_dark from "../src/assets/main_bg_dark_low.jpg";
+import bg_light from "../src/assets/main_bg_light_low.jpg";
 import SuggestionTils from "./Components/SuggetionTils";
 import API_ENDPOINT from "../Config";
 import "../src/Style/App.css";
 import ViewMorePage from "./Components/ViewMorePage";
+import WebDescription from "./Components/WebDescription";
 
 function App() {
   const isDarkMode = window.matchMedia("(prefers-color-scheme: dark)").matches;
-  let defaultTheme = "";
-  if (isDarkMode) {
-    defaultTheme = Themes.dark;
-  } else {
-    defaultTheme = Themes.light;
+  let refreshTheme = "";
+
+  const checkStorage = localStorage.getItem("defaultTheme");
+
+  if (!checkStorage) {
+    if (isDarkMode) {
+      localStorage.setItem("defaultTheme", "dark");
+    } else {
+      localStorage.setItem("defaultTheme", "light");
+    }
   }
-  const [currentTheme, setCurrentTheme] = useState(defaultTheme);
+
+  const themefromStorage = localStorage.getItem("defaultTheme");
+
+  if (themefromStorage === "dark") {
+    refreshTheme = Themes.dark;
+  } else {
+    refreshTheme = Themes.light;
+  }
+
+  const [currentTheme, setCurrentTheme] = useState(refreshTheme);
+
   let themeImgURL = "";
+  let bg_img_url = "";
   if (currentTheme === Themes.light) {
     themeImgURL = moonImage;
+    bg_img_url = bg_light;
   } else {
     themeImgURL = sunImage;
+    bg_img_url = bg_dark;
   }
 
   return (
     <>
       <ThemeContext.Provider value={currentTheme}>
         <BrowserRouter basename="/MovieRadar">
-          <div style={{ backgroundColor: currentTheme.background }}>
+          <div
+            className="first-page-bg"
+            // style={{
+            //   backgroundImage: bg_img_url ? `url(${bg_img_url})` : "none",
+            //   backgroundSize: "cover",
+            //   backgroundPosition: "center",
+            //   backgroundAttachment: "fixed", // This makes the background image stay in place
+            // }}
+            style={{ backgroundColor: currentTheme.background }}
+          >
             <Routes>
               <Route
                 path="/"
                 element={
                   <>
-                    <div
-                      style={{
-                        display: "flex",
-                        justifyContent: "space-between",
-                        padding: "15px",
-                      }}
-                    >
-                      <img src={logo} width={"200px"}></img>
-                      <img
-                        src={themeImgURL}
-                        width={"40px"}
-                        height={"40px"}
-                        onClick={() => {
-                          setCurrentTheme(
-                            currentTheme === Themes.light
-                              ? Themes.dark
-                              : Themes.light
-                          );
+                    <WebDescription>
+                      <div
+                        style={{
+                          display: "flex",
+                          justifyContent: "space-between",
+                          padding: "15px",
                         }}
-                      />
-                    </div>
+                      >
+                        <img src={logo} width={"200px"}></img>
+                        <img
+                          src={themeImgURL}
+                          width={"40px"}
+                          height={"40px"}
+                          onClick={() => {
+                            const newTheme =
+                              currentTheme === Themes.light
+                                ? Themes.dark
+                                : Themes.light;
+
+                            setCurrentTheme(newTheme);
+                            if (newTheme === Themes.dark) {
+                              localStorage.setItem("defaultTheme", "dark");
+                            } else {
+                              localStorage.setItem("defaultTheme", "light");
+                            }
+                          }}
+                        />
+                      </div>
+                    </WebDescription>
 
                     <div style={{ display: "flex", justifyContent: "center" }}>
                       <SuggestionTils
