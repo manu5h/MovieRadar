@@ -38,8 +38,6 @@ const SuggestionTils = (props) => {
       });
   }, [props.API]);
 
-  if (error) return <div>ERROR: {error}</div>;
-  if (loading) return <div>Loading...</div>;
 
   const scrollLeft = () => {
     if (scrollContainerRef.current) {

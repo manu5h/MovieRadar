@@ -32,10 +32,15 @@
   display: flex;
 }
 
+.view-more-background{
+  min-height: 100vh;
+}
+
 .view-more-details-right-side {
   flex-wrap: wrap;
   display: flex;
   overflow-y: scroll;
+  overflow-x: hidden;
   max-height: 330px;
   width: 730px;
   scroll-behavior: smooth;
@@ -148,5 +153,9 @@
 
   .view-more-full-main-details h1 {
     margin-bottom: 10px;
+  }
+
+  .view-more-background{
+    min-height: auto;
   }
 }

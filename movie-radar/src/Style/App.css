@@ -36,7 +36,6 @@ h5 {
   width: 100%;
   overflow: hidden;
   position: relative;
-  margin: 10px 0 30px 0;
 }
 
 .h1Style {
@@ -158,11 +157,12 @@ h5 {
   box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.15);
 }
 
+
 @media (max-width: 768px) {
   .movie-poster img {
     margin-top: 10px;
     width: 100px;
-    height: 165px;
+    height: 160px;
     border-radius: 10px;
   }
 
