@@ -290,14 +290,16 @@ function ViewMorePage() {
                             >
                               {cast.name}
                             </h3>
-                            <h4
-                              style={{
-                                color: theme.foreground,
-                                fontSize: "12px",
-                              }}
-                            >
-                              ({cast.character})
-                            </h4>
+                            {cast.character ? (
+                              <h4
+                                style={{
+                                  color: theme.foreground,
+                                  fontSize: "12px",
+                                }}
+                              >
+                                ({cast.character})
+                              </h4>
+                            ) : null}
                           </div>
                         ))}
                     </div>

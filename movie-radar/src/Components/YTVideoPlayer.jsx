@@ -49,7 +49,7 @@ const YouTubeVideo = ({ movieId }) => {
           allowFullScreen
         ></iframe>
       ) : (
-        !error && <p>Loading...</p>
+        null
       )}
     </div>
   );

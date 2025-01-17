@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "../Style/Search.css";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faClose, faSearch } from "@fortawesome/free-solid-svg-icons";
 import SearchModel from "./SearchModel";
 
 function Search() {
@@ -22,10 +22,13 @@ function Search() {
           onChange={(e) => setSearchTerm(e.target.value)}
         />
         <button type="submit" className="searchButton" onClick={handleSubmit}>
-          <FontAwesomeIcon icon={faSearch} />
+          {searchTerm ? (
+            <FontAwesomeIcon icon={faClose} onClick={()=>{setSearchTerm("")}}/>
+          ) : (
+            <FontAwesomeIcon icon={faSearch} />
+          )}
         </button>
       </div>
-
 
       {searchTerm && <SearchModel keyWord={searchTerm} />}
     </div>
