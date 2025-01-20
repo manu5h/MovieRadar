@@ -4,7 +4,7 @@ import "../Style/WebDecsription.css";
 import ThemeContext from "./Theme";
 import Search from "./Search";
 
-function WebDescription({ children }) {
+function WebDescription({ children, enableSearch }) {
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
   const [day, setDay] = useState(0);
@@ -66,7 +66,7 @@ function WebDescription({ children }) {
       <h3 className="flare-subheading">
         Your ultimate movie guide, all in one place
       </h3>
-      <Search/>
+      {enableSearch ? <Search /> : null}
     </div>
   );
 }

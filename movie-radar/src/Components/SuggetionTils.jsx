@@ -20,6 +20,18 @@ const SuggestionTils = (props) => {
   // Reference for the scrollable container
   const scrollContainerRef = useRef();
 
+  const blacklistedKeywords = [
+    "porn",
+    "xxx",
+    "erotic",
+    "explicit",
+    "nude",
+    "fetish",
+    "sex",
+    "adult",
+    "hardcore",
+  ];
+
   useEffect(() => {
     fetch(props.API)
       .then((response) => {
@@ -38,7 +50,6 @@ const SuggestionTils = (props) => {
       });
   }, [props.API]);
 
-
   const scrollLeft = () => {
     if (scrollContainerRef.current) {
       scrollContainerRef.current.scrollLeft -= 400;
@@ -53,7 +64,6 @@ const SuggestionTils = (props) => {
 
   const handleMouseEnter = () => setOpacity(1);
   const handleMouseLeave = () => setOpacity(0.5);
-
 
   return (
     <div
@@ -84,9 +94,20 @@ const SuggestionTils = (props) => {
         />
       </button>
       {/* Scrollable Content */}
-      <div className="scroll-container" ref={scrollContainerRef}>
+      <div
+        className="scroll-container"
+        style={{ overflowX: "auto" }}
+        ref={scrollContainerRef}
+      >
         {data?.results?.map((movie) =>
-          movie.poster_path ? (
+          movie.poster_path &&
+          movie.overview &&
+          movie.title &&
+          !blacklistedKeywords.some(
+            (keyword) =>
+              movie.title.toLowerCase().includes(keyword) ||
+              movie.overview.toLowerCase().includes(keyword)
+          ) ? (
             <div
               className="tile-full-div"
               key={movie.id}
