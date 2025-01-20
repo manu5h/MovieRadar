@@ -3,10 +3,11 @@ export const OMDB_APIKey = import.meta.env.VITE_OMDB_APIKey;
 
 
 const getFirstDayTwoMonthsAgo = () => {
-    const today = new Date();
-    const twoMonthsAgo = new Date(today.getFullYear(), today.getMonth() - 2, 1); 
-    const month = String(twoMonthsAgo.getMonth() + 1).padStart(2, '0'); 
-    const day = String(twoMonthsAgo.getDate()).padStart(2, '0'); 
+  const today = new Date();
+  const twoMonthsAgo = new Date(today.getFullYear(), today.getMonth() - 2, 1); 
+  const year = twoMonthsAgo.getFullYear();
+  const month = String(twoMonthsAgo.getMonth() + 1).padStart(2, '0');
+  const day = String(twoMonthsAgo.getDate()).padStart(2, '0'); 
     return `${year}-${month}-${day}`;
   };
 const today = new Date();
