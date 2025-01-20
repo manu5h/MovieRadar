@@ -1,0 +1,19 @@
+Disclaimer for Movie Radar
+Last Updated: January 2025
+
+Purpose:
+Movie Radar is a non-commercial project created for educational and personal use. It is designed to demonstrate web development skills and API integration, not for business or profit.
+
+Data Sources:
+The movie data, posters, and ratings are sourced from The Movie Database (TMDb) and OMDb API. While we strive for accuracy, we cannot guarantee that all information is correct, complete, or up-to-date.
+
+No Affiliation:
+This project is not officially affiliated with or endorsed by TMDb, OMDb, or any production company.
+
+No Liability:
+The developer takes no responsibility for errors, inaccuracies, or any issues arising from the use of this application. Users should verify information independently.
+
+Fair Use:
+All content is used under fair use for educational and personal purposes only.
+
+Thank you for using Movie Radar! This is a passion project created to share love for movies and coding.
