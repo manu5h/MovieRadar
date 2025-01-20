@@ -1,12 +1,12 @@
-export const TMDB_APIKey = "3e19ed027343875b8ea3f3d64a77a190";
-const OMDB_APIKey = "886d6bec";
+export const TMDB_APIKey = import.meta.env.VITE_TMDB_APIKey;
+export const OMDB_APIKey = import.meta.env.VITE_OMDB_APIKey;
+
+
 const getFirstDayTwoMonthsAgo = () => {
     const today = new Date();
-    const twoMonthsAgo = new Date(today.getFullYear(), today.getMonth() - 2, 1); // Set to the first day of two months ago
-    const year = twoMonthsAgo.getFullYear();
-    const month = String(twoMonthsAgo.getMonth() + 1).padStart(2, '0'); // Ensure two-digit month
-    const day = String(twoMonthsAgo.getDate()).padStart(2, '0'); // Ensure two-digit day
-  
+    const twoMonthsAgo = new Date(today.getFullYear(), today.getMonth() - 2, 1); 
+    const month = String(twoMonthsAgo.getMonth() + 1).padStart(2, '0'); 
+    const day = String(twoMonthsAgo.getDate()).padStart(2, '0'); 
     return `${year}-${month}-${day}`;
   };
 const today = new Date();

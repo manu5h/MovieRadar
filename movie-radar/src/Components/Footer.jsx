@@ -56,7 +56,7 @@ function Footer() {
           >
             <span style={{ textDecoration: "underline" }}>Manush</span>.
           </a>
-          <h6>Version 1.0.0</h6>
+          <h6>Version 1.1.0</h6>
         </h5>
       </div>
     </div>
