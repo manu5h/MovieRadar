@@ -1,0 +1,121 @@
+/* Filter Modal Overlay */
+.filter-model-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* Filter Modal Container */
+.filter-model-container {
+  background-color: #ffffff;
+  border-radius: 15px;
+  padding: 30px;
+  width: 80%;
+  max-height: 60%;
+  max-width: 600px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  color: #333;
+  overflow-y: auto;
+  position: relative;
+}
+
+.filter-model-container h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Close Button */
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 20px;
+  font-weight: bold;
+  color: #333;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.close-button:hover {
+  color: red;
+}
+
+/* Filter Groups */
+.filter-group {
+  margin-bottom: 20px;
+}
+
+.filter-group h3 {
+  margin-bottom: 10px;
+  color: #555;
+}
+
+.filter-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.filter-button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 20px;
+  background-color: #e0e0e0;
+  color: #333;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.3s ease;
+}
+
+.filter-button.selected {
+  background-color: #00b4cc;
+  color: #fff;
+}
+
+.filter-button:hover {
+  background-color: #00b4cc;
+  color: #fff;
+}
+
+.filter-year-input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+}
+
+.apply-button {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  background-color: #00b4cc;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.apply-button:hover {
+  background-color: #00b4cc;
+}
+
+.apply-button.disabled {
+  background-color: gray;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.apply-button:hover:not(.disabled) {
+  background-color: #00b4cc;
+}

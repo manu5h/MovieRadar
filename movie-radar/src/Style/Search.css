@@ -15,6 +15,7 @@ body {
 }
 
 .searchTerm {
+  font-size: 14px;
   width: 100%;
   border: 3px solid #00b4cc;
   border-right: none;
@@ -63,5 +64,9 @@ body {
   .wrap {
     width: 65%;
     top: 85%;
+  }
+
+  .searchTerm {
+    font-size: 12px;
   }
 }

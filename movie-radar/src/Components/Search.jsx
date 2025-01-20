@@ -3,8 +3,9 @@ import "../Style/Search.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faClose, faSearch } from "@fortawesome/free-solid-svg-icons";
 import SearchModel from "./SearchModel";
+import API_ENDPOINT from "../../Config";
 
-function Search() {
+function Search( props ) {
   const [searchTerm, setSearchTerm] = useState("");
 
   const handleSubmit = (e) => {
@@ -30,7 +31,7 @@ function Search() {
         </button>
       </div>
 
-      {searchTerm && <SearchModel keyWord={searchTerm} />}
+      {searchTerm && <SearchModel keyWord={searchTerm} API={API_ENDPOINT.Search_URL}/>}
     </div>
   );
 }

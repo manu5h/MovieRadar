@@ -1,4 +1,4 @@
-const TMDB_APIKey = "3e19ed027343875b8ea3f3d64a77a190";
+export const TMDB_APIKey = "3e19ed027343875b8ea3f3d64a77a190";
 const OMDB_APIKey = "886d6bec";
 const getFirstDayTwoMonthsAgo = () => {
     const today = new Date();
@@ -29,7 +29,6 @@ const API_ENDPOINT = {
     IMDB_rating: `https://www.omdbapi.com/?i=:IMDB_Id&apikey=${OMDB_APIKey}`,
     Cast_URL: `https://api.themoviedb.org/3/movie/:id/credits?api_key=${TMDB_APIKey}`,
     Search_URL: `https://api.themoviedb.org/3/search/movie?query=:KeyWord&api_key=${TMDB_APIKey}`,
-
     
 
 }
