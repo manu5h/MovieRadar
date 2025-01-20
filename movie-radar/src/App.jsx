@@ -1,6 +1,6 @@
 import ThemeContext, { Themes } from "./Components/Theme";
 import logo from "../src/assets/Movie_radar_logo.png";
-import { useState } from "react";
+import { useState, lazy, Suspense } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import moonImage from "../src/assets/moon.png";
 import sunImage from "../src/assets/sun.png";
@@ -9,12 +9,15 @@ import bg_light from "../src/assets/main_bg_light_low.jpg";
 import SuggestionTils from "./Components/SuggetionTils";
 import API_ENDPOINT from "../Config";
 import "../src/Style/App.css";
-import ViewMorePage from "./Components/ViewMorePage";
+//import ViewMorePage from "./Components/ViewMorePage";
 import WebDescription from "./Components/WebDescription";
-import FilterModel from "./Components/FilterModel";
+//import FilterModel from "./Components/FilterModel";
 import Footer from "./Components/Footer";
 
 function App() {
+  const ViewMorePage = lazy(() => import("./Components/ViewMorePage"));
+  const FilterModel = lazy(() => import("./Components/FilterModel"));
+
   const isDarkMode = window.matchMedia("(prefers-color-scheme: dark)").matches;
   const [showFilter, setShowFilter] = useState(false);
   const [enableFilter, setEnableFilter] = useState(false);
@@ -131,41 +134,43 @@ function App() {
 
                     {enableFilter ? (
                       <>
-                      <div style={{ display: "flex", justifyContent: "center" }}>
-                        <SuggestionTils
-                          category={
-                            searchedFilters.genre && searchedFilters.language
-                              ? `Best Movies for "${searchedFilters.genre}" & "${searchedFilters.language}"`
-                              : searchedFilters.genre
-                              ? `Best Movies for "${searchedFilters.genre}"`
-                              : searchedFilters.language
-                              ? `Best Movies for "${searchedFilters.language}"`
-                              : "Search Results"
-                          }
-                          API={searchAPI}
-                          wrap="Enable"
-                        />
-                      </div>
-                    
-                      {/* Render additional pages only if there are more than 1 page */}
-                      {pageCount > 1 &&
-                        Array.from({ length: Math.min(pageCount - 1, 13) }).map((_, index) => (
-                          <div
-                            key={index}
-                            style={{
-                              display: "flex",
-                              justifyContent: "center",
-                            }}
-                          >
-                            <SuggestionTils
-                              category={`Page ${index + 2}`}
-                              API={`${searchAPI}&page=${index + 2}`}
-                              wrap="Enable"
-                            />
-                          </div>
-                        ))}
-                    </>
-                    
+                        <div
+                          style={{ display: "flex", justifyContent: "center" }}
+                        >
+                          <SuggestionTils
+                            category={
+                              searchedFilters.genre && searchedFilters.language
+                                ? `Search Results for "${searchedFilters.genre}" & "${searchedFilters.language}"`
+                                : searchedFilters.genre
+                                ? `Search Results for "${searchedFilters.genre}"`
+                                : searchedFilters.language
+                                ? `Search Results for "${searchedFilters.language}"`
+                                : "Search Results"
+                            }
+                            API={searchAPI}
+                            wrap="Enable"
+                          />
+                        </div>
+
+                        {/* Render additional pages only if there are more than 1 page */}
+                        {pageCount > 1 &&
+                          Array.from({
+                            length: Math.min(pageCount - 1, 13),
+                          }).map((_, index) => (
+                            <div
+                              key={index}
+                              style={{
+                                display: "flex",
+                                justifyContent: "center",
+                              }}
+                            >
+                              <SuggestionTils
+                                API={`${searchAPI}&page=${index + 2}`}
+                                wrap="Enable"
+                              />
+                            </div>
+                          ))}
+                      </>
                     ) : (
                       <>
                         <div
@@ -262,18 +267,29 @@ function App() {
                     )}
 
                     {showFilter && (
-                      <FilterModel
-                        onClose={() => setShowFilter(false)}
-                        SearchAPI={handleSearchAPI}
-                        selectedFilters={handleSearchFilters}
-                        updatePageCount={handlePageCountUpdate}
-                      />
+                      <Suspense fallback={<h1>Loading!!!</h1>}>
+                        <FilterModel
+                          onClose={() => setShowFilter(false)}
+                          SearchAPI={handleSearchAPI}
+                          selectedFilters={handleSearchFilters}
+                          updatePageCount={handlePageCountUpdate}
+                        />
+                      </Suspense>
                     )}
+                    <h6 style={{color: currentTheme.foreground, padding: "0 0 10px 10px", fontSize: '12px'}}>&#xB7; You can explore more movies by searching or filtering them by genre.</h6>
                     <Footer />
                   </>
                 }
               ></Route>
-              <Route path="/view-more" element={<ViewMorePage />}></Route>
+
+              <Route
+                path="/view-more"
+                element={
+                  <Suspense fallback={<h1>Loading!!!</h1>}>
+                    <ViewMorePage />
+                  </Suspense>
+                }
+              ></Route>
             </Routes>
           </div>
         </BrowserRouter>

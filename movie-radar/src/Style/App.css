@@ -168,7 +168,7 @@ h5 {
 }
 
 .filterButton {
-  font-size: 14px;
+  font-size: 12px;
   padding: 10px 15px;
   color: #00b4cc;
   background-color: transparent;
@@ -278,5 +278,9 @@ h5 {
   .themeImg {
     width: 25px;
     height: 26px;
+  }
+
+  .filterButton {
+    font-size: 11px;
   }
 }
