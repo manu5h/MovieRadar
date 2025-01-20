@@ -80,7 +80,7 @@ h5 {
 }
 
 .movie-poster h4 {
-  width: 150px;
+  max-width: 150px;
   padding-left: 10px;
   margin: 0;
   height: 95px;

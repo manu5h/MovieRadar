@@ -19,6 +19,7 @@ function App() {
   const [showFilter, setShowFilter] = useState(false);
   const [enableFilter, setEnableFilter] = useState(false);
   const [searchAPI, setsearchAPI] = useState({});
+  const [pageCount, setPageCount] = useState({});
   const [searchedFilters, setsearchedFilters] = useState({});
   let refreshTheme = "";
 
@@ -59,6 +60,10 @@ function App() {
 
   const handleSearchFilters = (filters) => {
     setsearchedFilters(filters);
+  };
+
+  const handlePageCountUpdate = (pages) => {
+    setPageCount(pages);
   };
 
   return (
@@ -125,9 +130,8 @@ function App() {
                     </div>
 
                     {enableFilter ? (
-                      <div
-                        style={{ display: "flex", justifyContent: "center" }}
-                      >
+                      <>
+                      <div style={{ display: "flex", justifyContent: "center" }}>
                         <SuggestionTils
                           category={
                             searchedFilters.genre && searchedFilters.language
@@ -142,6 +146,26 @@ function App() {
                           wrap="Enable"
                         />
                       </div>
+                    
+                      {/* Render additional pages only if there are more than 1 page */}
+                      {pageCount > 1 &&
+                        Array.from({ length: Math.min(pageCount - 1, 13) }).map((_, index) => (
+                          <div
+                            key={index}
+                            style={{
+                              display: "flex",
+                              justifyContent: "center",
+                            }}
+                          >
+                            <SuggestionTils
+                              category={`Page ${index + 2}`}
+                              API={`${searchAPI}&page=${index + 2}`}
+                              wrap="Enable"
+                            />
+                          </div>
+                        ))}
+                    </>
+                    
                     ) : (
                       <>
                         <div
@@ -242,6 +266,7 @@ function App() {
                         onClose={() => setShowFilter(false)}
                         SearchAPI={handleSearchAPI}
                         selectedFilters={handleSearchFilters}
+                        updatePageCount={handlePageCountUpdate}
                       />
                     )}
                     <Footer />
