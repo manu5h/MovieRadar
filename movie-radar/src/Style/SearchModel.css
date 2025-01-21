@@ -1,5 +1,5 @@
 .search-model-main-div {
-  margin-top: 10px;
+  margin-top: 60px;
   width: 80%;
   position: absolute;
   top: 300px;
@@ -57,5 +57,9 @@
 
   .search-img-and-title-div h4 {
     font-size: 11px;
+  }
+
+  .search-model-main-div {
+    margin-top: -50px;
   }
 }

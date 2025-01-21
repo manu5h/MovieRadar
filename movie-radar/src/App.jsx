@@ -4,15 +4,11 @@ import { useState, lazy, Suspense } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import moonImage from "../src/assets/moon.png";
 import sunImage from "../src/assets/sun.png";
-import bg_dark from "../src/assets/main_bg_dark_low.jpg";
-import bg_light from "../src/assets/main_bg_light_low.jpg";
 import SuggestionTils from "./Components/SuggetionTils";
 import API_ENDPOINT from "../Config";
-import "../src/Style/App.css";
-//import ViewMorePage from "./Components/ViewMorePage";
 import WebDescription from "./Components/WebDescription";
-//import FilterModel from "./Components/FilterModel";
 import Footer from "./Components/Footer";
+import "../src/Style/App.css";
 
 function App() {
   const ViewMorePage = lazy(() => import("./Components/ViewMorePage"));
@@ -47,13 +43,10 @@ function App() {
   const [currentTheme, setCurrentTheme] = useState(refreshTheme);
 
   let themeImgURL = "";
-  let bg_img_url = "";
   if (currentTheme === Themes.light) {
     themeImgURL = moonImage;
-    bg_img_url = bg_light;
   } else {
     themeImgURL = sunImage;
-    bg_img_url = bg_dark;
   }
 
   const handleSearchAPI = (API) => {
