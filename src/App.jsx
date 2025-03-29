@@ -65,7 +65,7 @@ function App() {
   return (
     <>
       <ThemeContext.Provider value={currentTheme}>
-        <BrowserRouter basename="/MovieRadar">
+        <BrowserRouter basename="">
           <div
             className="first-page-bg"
             style={{ backgroundColor: currentTheme.background }}
@@ -269,7 +269,16 @@ function App() {
                         />
                       </Suspense>
                     )}
-                    <h6 style={{color: currentTheme.foreground, padding: "0 0 10px 10px", fontSize: '12px'}}>&#xB7; You can explore more movies by searching or filtering them by genre.</h6>
+                    <h6
+                      style={{
+                        color: currentTheme.foreground,
+                        padding: "0 0 10px 10px",
+                        fontSize: "12px",
+                      }}
+                    >
+                      &#xB7; You can explore more movies by searching or
+                      filtering them by genre.
+                    </h6>
                     <Footer />
                   </>
                 }
