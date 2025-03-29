@@ -1,6 +1,6 @@
 import ThemeContext, { Themes } from "./Components/Theme";
 import logo from "../src/assets/Movie_radar_logo.png";
-import { useState, lazy, Suspense } from "react";
+import { useState, lazy, Suspense, useEffect } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import moonImage from "../src/assets/moon.png";
 import sunImage from "../src/assets/sun.png";
@@ -9,8 +9,13 @@ import API_ENDPOINT from "../Config";
 import WebDescription from "./Components/WebDescription";
 import Footer from "./Components/Footer";
 import "../src/Style/App.css";
+import { updateVisitorCount, updateUniqueVisitorCount } from "./firebase";
 
 function App() {
+  useEffect(() => {
+    updateVisitorCount();
+    updateUniqueVisitorCount();
+  }, []);
   const ViewMorePage = lazy(() => import("./Components/ViewMorePage"));
   const FilterModel = lazy(() => import("./Components/FilterModel"));
 
