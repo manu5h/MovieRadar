@@ -22,16 +22,46 @@ function Footer() {
       </h6>
 
       {showIframe && (
-        <iframe
-          src="/MovieRadar/Disclaimer.txt"
-          style={{
-            width: "100%",
-            height: "400px",
-            border: "1px solid #ccc",
-            marginTop: "10px",
-          }}
-          title="Disclaimer"
-        />
+        <p style={{ color: "#fff", padding: "15px" , fontSize: "13px"}}>
+          
+          <br />
+          • Purpose: Movie Radar is a non-commercial project created for
+          educational and personal use. It is designed to demonstrate web
+          development skills and API integration, not for business or profit.
+          <br />
+          <br />
+          • Data Sources: Movie data, posters, and ratings are sourced from The
+          Movie Database (TMDb) and OMDb API. While we strive for accuracy, we
+          cannot guarantee that all information is correct, complete, or
+          up-to-date.
+          <br />
+          <br />
+          • Content Advisory: Some movies may contain adult themes or material
+          not suitable for children. This information comes directly from the
+          APIs, and the developer has no control over such content.
+          <br />
+          <br />
+          • No Affiliation: This project is not officially affiliated with or
+          endorsed by TMDb, OMDb, or any production company.
+          <br />
+          <br />
+          • No Liability: The developer takes no responsibility for errors,
+          inaccuracies, or any issues arising from the use of this application.
+          Users should verify information independently.
+          <br />
+          <br />
+          • Fair Use: All content is used under fair use for educational and
+          personal purposes only.
+          <br />
+          <br />
+          Thank you for using Movie Radar! This is a passion project created to
+          share love for movies and coding.
+          <br />
+          <br />
+          <br />
+          <strong>Last Updated: September 2025</strong>
+          <br />
+        </p>
       )}
 
       <div
@@ -41,22 +71,18 @@ function Footer() {
           alignItems: "center",
         }}
       >
-        <img
-          src={logo}
-          alt="Movie Radar Logo"
-          style={{ maxWidth: "200px"}}
-        />
+        <img src={logo} alt="Movie Radar Logo" style={{ maxWidth: "200px" }} />
         <h5>
-          2025 | All Rights Reserved{" "}
+          2025 | All Rights Reserved by{" "}
           <a
-            href="https://www.linkedin.com/in/manusha-upekshana/"
+            href="https://manushdev.netlify.app/"
             target="_blank"
             rel="noopener noreferrer"
             style={{ textDecoration: "none", color: "inherit" }}
           >
             <span style={{ textDecoration: "underline" }}>Manush</span>.
           </a>
-          <span>Version 1.1.0</span>
+          <h6>{" "}Version 1.2.0</h6>
         </h5>
       </div>
     </div>
